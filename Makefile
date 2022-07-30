@@ -1,7 +1,7 @@
 LIBSODIUMVERSION=1.0.18-stable
 LIBSODIUMUNPACKED=libsodium-stable
 
-LIBSODIUM_JS=$(LIBSODIUMUNPACKED)/libsodium-js-sumo/lib/libsodium.js
+LIBSODIUM_JS=$(LIBSODIUMUNPACKED)/libsodium-js/lib/libsodium.js
 
 test: all
 	npm test
@@ -17,7 +17,7 @@ $(LIBSODIUM_JS): $(LIBSODIUMUNPACKED)
 		-v $$(pwd)/$(LIBSODIUMUNPACKED):/src \
 		--user $$(id -u):$$(id -g) \
 		trzeci/emscripten \
-		/src/dist-build/emscripten.sh --sumo
+		/src/dist-build/emscripten.sh --standard
 	[ -f $@ ] && touch $@
 
 lib: $(LIBSODIUM_JS) nacl_cooked_prefix.js nacl_cooked.js nacl_cooked_suffix.js
@@ -32,5 +32,6 @@ veryclean: clean
 $(LIBSODIUMUNPACKED): libsodium-$(LIBSODIUMVERSION).tar.gz
 	tar -zxvf $<
 	patch -p0 < libsodium-memory-configuration.patch
+	patch -p0 < libsodium-minimal-standard-symbols.patch
 
 .PRECIOUS: $(LIBSODIUM_JS)

@@ -119,6 +119,7 @@ function nacl_cooked(nacl_raw) {
     }
   }
 
+  /*
   //---------------------------------------------------------------------------
   // Randomness
 
@@ -127,8 +128,10 @@ function nacl_cooked(nacl_raw) {
     nacl_raw._randombytes_buf(bs.address, count);
     return bs.extractBytes();
   }
+  */
 
   nacl_raw._randombytes_stir();
+  /*
 
   //---------------------------------------------------------------------------
   // Boxing
@@ -341,6 +344,7 @@ function nacl_cooked(nacl_raw) {
     free_all([c, na, ka]);
     return m.extractBytes(nacl_raw._crypto_secretbox_zerobytes());
   }
+  */
 
   //---------------------------------------------------------------------------
   // Boxing with ephemeral keys
@@ -355,6 +359,7 @@ function nacl_cooked(nacl_raw) {
     return c.extractBytes();
   }
 
+  /*
   function crypto_box_seal_open(ciphertext, pk, sk) {
     var c = injectBytes(ciphertext);
     var pka = check_injectBytes("crypto_box_seal_open",
@@ -471,35 +476,36 @@ function nacl_cooked(nacl_raw) {
     FREE(na);
     return q.extractBytes();
   }
+  */
 
   //---------------------------------------------------------------------------
 
-  exports.crypto_auth_BYTES = nacl_raw._crypto_auth_bytes();
-  exports.crypto_auth_KEYBYTES = nacl_raw._crypto_auth_keybytes();
-  exports.crypto_box_BEFORENMBYTES = nacl_raw._crypto_box_beforenmbytes();
-  exports.crypto_box_BOXZEROBYTES = nacl_raw._crypto_box_boxzerobytes();
-  exports.crypto_box_NONCEBYTES = nacl_raw._crypto_box_noncebytes();
-  exports.crypto_box_PUBLICKEYBYTES = nacl_raw._crypto_box_publickeybytes();
-  exports.crypto_box_SECRETKEYBYTES = nacl_raw._crypto_box_secretkeybytes();
-  exports.crypto_box_ZEROBYTES = nacl_raw._crypto_box_zerobytes();
-  exports.crypto_hash_BYTES = nacl_raw._crypto_hash_bytes();
-  exports.crypto_hash_sha256_BYTES = nacl_raw._crypto_hash_sha256_bytes();
+  // exports.crypto_auth_BYTES = nacl_raw._crypto_auth_bytes();
+  // exports.crypto_auth_KEYBYTES = nacl_raw._crypto_auth_keybytes();
+  // exports.crypto_box_BEFORENMBYTES = nacl_raw._crypto_box_beforenmbytes();
+  // exports.crypto_box_BOXZEROBYTES = nacl_raw._crypto_box_boxzerobytes();
+  // exports.crypto_box_NONCEBYTES = nacl_raw._crypto_box_noncebytes();
+  // exports.crypto_box_PUBLICKEYBYTES = nacl_raw._crypto_box_publickeybytes();
+  // exports.crypto_box_SECRETKEYBYTES = nacl_raw._crypto_box_secretkeybytes();
+  // exports.crypto_box_ZEROBYTES = nacl_raw._crypto_box_zerobytes();
+  // exports.crypto_hash_BYTES = nacl_raw._crypto_hash_bytes();
+  // exports.crypto_hash_sha256_BYTES = nacl_raw._crypto_hash_sha256_bytes();
   // exports.crypto_hashblocks_BLOCKBYTES = nacl_raw._crypto_hashblocks_blockbytes();
   // exports.crypto_hashblocks_STATEBYTES = nacl_raw._crypto_hashblocks_statebytes();
-  exports.crypto_onetimeauth_BYTES = nacl_raw._crypto_onetimeauth_bytes();
-  exports.crypto_onetimeauth_KEYBYTES = nacl_raw._crypto_onetimeauth_keybytes();
-  exports.crypto_secretbox_BOXZEROBYTES = nacl_raw._crypto_secretbox_boxzerobytes();
-  exports.crypto_secretbox_KEYBYTES = nacl_raw._crypto_secretbox_keybytes();
-  exports.crypto_secretbox_NONCEBYTES = nacl_raw._crypto_secretbox_noncebytes();
-  exports.crypto_secretbox_ZEROBYTES = nacl_raw._crypto_secretbox_zerobytes();
-  exports.crypto_sign_BYTES = nacl_raw._crypto_sign_bytes();
-  exports.crypto_sign_PUBLICKEYBYTES = nacl_raw._crypto_sign_publickeybytes();
-  exports.crypto_sign_SECRETKEYBYTES = nacl_raw._crypto_sign_secretkeybytes();
+  // exports.crypto_onetimeauth_BYTES = nacl_raw._crypto_onetimeauth_bytes();
+  // exports.crypto_onetimeauth_KEYBYTES = nacl_raw._crypto_onetimeauth_keybytes();
+  // exports.crypto_secretbox_BOXZEROBYTES = nacl_raw._crypto_secretbox_boxzerobytes();
+  // exports.crypto_secretbox_KEYBYTES = nacl_raw._crypto_secretbox_keybytes();
+  // exports.crypto_secretbox_NONCEBYTES = nacl_raw._crypto_secretbox_noncebytes();
+  // exports.crypto_secretbox_ZEROBYTES = nacl_raw._crypto_secretbox_zerobytes();
+  // exports.crypto_sign_BYTES = nacl_raw._crypto_sign_bytes();
+  // exports.crypto_sign_PUBLICKEYBYTES = nacl_raw._crypto_sign_publickeybytes();
+  // exports.crypto_sign_SECRETKEYBYTES = nacl_raw._crypto_sign_secretkeybytes();
   // exports.crypto_stream_BEFORENMBYTES = nacl_raw._crypto_stream_beforenmbytes();
-  exports.crypto_stream_KEYBYTES = nacl_raw._crypto_stream_keybytes();
-  exports.crypto_stream_NONCEBYTES = nacl_raw._crypto_stream_noncebytes();
-  exports.crypto_scalarmult_SCALARBYTES = nacl_raw._crypto_scalarmult_curve25519_scalarbytes();
-  exports.crypto_scalarmult_BYTES = nacl_raw._crypto_scalarmult_curve25519_bytes();
+  // exports.crypto_stream_KEYBYTES = nacl_raw._crypto_stream_keybytes();
+  // exports.crypto_stream_NONCEBYTES = nacl_raw._crypto_stream_noncebytes();
+  // exports.crypto_scalarmult_SCALARBYTES = nacl_raw._crypto_scalarmult_curve25519_scalarbytes();
+  // exports.crypto_scalarmult_BYTES = nacl_raw._crypto_scalarmult_curve25519_bytes();
 
   exports.encode_utf8 = encode_utf8;
   exports.encode_latin1 = encode_latin1;
@@ -508,52 +514,52 @@ function nacl_cooked(nacl_raw) {
   exports.to_hex = to_hex;
   exports.from_hex = from_hex;
 
-  exports.random_bytes = random_bytes;
+  // exports.random_bytes = random_bytes;
 
-  exports.crypto_box_keypair = crypto_box_keypair;
-  exports.crypto_box_random_nonce = crypto_box_random_nonce;
-  exports.crypto_box = crypto_box;
-  exports.crypto_box_open = crypto_box_open;
-  exports.crypto_box_precompute = crypto_box_precompute;
-  exports.crypto_box_precomputed = crypto_box_precomputed;
-  exports.crypto_box_open_precomputed = crypto_box_open_precomputed;
+  // exports.crypto_box_keypair = crypto_box_keypair;
+  // exports.crypto_box_random_nonce = crypto_box_random_nonce;
+  // exports.crypto_box = crypto_box;
+  // exports.crypto_box_open = crypto_box_open;
+  // exports.crypto_box_precompute = crypto_box_precompute;
+  // exports.crypto_box_precomputed = crypto_box_precomputed;
+  // exports.crypto_box_open_precomputed = crypto_box_open_precomputed;
 
-  exports.crypto_stream_random_nonce = crypto_stream_random_nonce;
-  exports.crypto_stream = crypto_stream;
-  exports.crypto_stream_xor = crypto_stream_xor;
+  // exports.crypto_stream_random_nonce = crypto_stream_random_nonce;
+  // exports.crypto_stream = crypto_stream;
+  // exports.crypto_stream_xor = crypto_stream_xor;
 
-  exports.crypto_onetimeauth = crypto_onetimeauth;
-  exports.crypto_onetimeauth_verify = crypto_onetimeauth_verify;
+  // exports.crypto_onetimeauth = crypto_onetimeauth;
+  // exports.crypto_onetimeauth_verify = crypto_onetimeauth_verify;
 
-  exports.crypto_auth = crypto_auth;
-  exports.crypto_auth_verify = crypto_auth_verify;
+  // exports.crypto_auth = crypto_auth;
+  // exports.crypto_auth_verify = crypto_auth_verify;
 
-  exports.crypto_secretbox_random_nonce = crypto_secretbox_random_nonce;
-  exports.crypto_secretbox = crypto_secretbox;
-  exports.crypto_secretbox_open = crypto_secretbox_open;
+  // exports.crypto_secretbox_random_nonce = crypto_secretbox_random_nonce;
+  // exports.crypto_secretbox = crypto_secretbox;
+  // exports.crypto_secretbox_open = crypto_secretbox_open;
 
   exports.crypto_box_seal = crypto_box_seal;
-  exports.crypto_box_seal_open = crypto_box_seal_open;
+  // exports.crypto_box_seal_open = crypto_box_seal_open;
 
-  exports.crypto_sign_keypair = crypto_sign_keypair;
-  exports.crypto_sign = crypto_sign;
-  exports.crypto_sign_detached = crypto_sign_detached;
-  exports.crypto_sign_open = crypto_sign_open;
-  exports.crypto_sign_verify_detached = crypto_sign_verify_detached;
+  // exports.crypto_sign_keypair = crypto_sign_keypair;
+  // exports.crypto_sign = crypto_sign;
+  // exports.crypto_sign_detached = crypto_sign_detached;
+  // exports.crypto_sign_open = crypto_sign_open;
+  // exports.crypto_sign_verify_detached = crypto_sign_verify_detached;
 
-  exports.crypto_hash = crypto_hash;
-  exports.crypto_hash_sha256 = crypto_hash_sha256;
-  exports.crypto_hash_string = crypto_hash_string;
+  // exports.crypto_hash = crypto_hash;
+  // exports.crypto_hash_sha256 = crypto_hash_sha256;
+  // exports.crypto_hash_string = crypto_hash_string;
 
-  exports.crypto_sign_seed_keypair = crypto_sign_seed_keypair;
-  exports.crypto_box_seed_keypair = crypto_box_seed_keypair;
-  exports.crypto_box_keypair_from_raw_sk = crypto_box_keypair_from_raw_sk;
+  // exports.crypto_sign_seed_keypair = crypto_sign_seed_keypair;
+  // exports.crypto_box_seed_keypair = crypto_box_seed_keypair;
+  // exports.crypto_box_keypair_from_raw_sk = crypto_box_keypair_from_raw_sk;
   // Backwards-compatibility:
-  exports.crypto_sign_keypair_from_seed = crypto_sign_seed_keypair;
-  exports.crypto_box_keypair_from_seed = crypto_box_seed_keypair;
+  // exports.crypto_sign_keypair_from_seed = crypto_sign_seed_keypair;
+  // exports.crypto_box_keypair_from_seed = crypto_box_seed_keypair;
 
-  exports.crypto_scalarmult = crypto_scalarmult;
-  exports.crypto_scalarmult_base = crypto_scalarmult_base;
+  // exports.crypto_scalarmult = crypto_scalarmult;
+  // exports.crypto_scalarmult_base = crypto_scalarmult_base;
 
   return exports;
 }

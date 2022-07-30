@@ -1,9 +1,9 @@
 {
-  "name": "js-nacl",
-  "version": "1.4.0",
+  "name": "@thehotelsnetwork/js-nacl",
+  "version": "1.5.0",
   "description": "High-level API to libsodium.",
   "main": "lib/nacl_factory.js",
-  "author": "Tony Garnock-Jones",
+  "author": "Tony Garnock-Jones, The Hotels Network",
   "keywords": [
     "encryption",
     "high-level",
